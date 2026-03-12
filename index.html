@@ -615,6 +615,260 @@
   }
   .planning-cta-text p { font-size: 0.9rem; color: var(--grey-dark); margin-bottom: 0.75rem; }
 
+  /* ─── PROGRESS TRACKER ─── */
+  .progress-tracker {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(194,167,207,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .progress-tracker-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .progress-tracker-top h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--purple-dark);
+    margin: 0;
+  }
+  .progress-pct {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--purple);
+  }
+  .progress-track {
+    height: 10px;
+    background: #e8ddf0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--purple) 0%, var(--lime) 100%);
+    border-radius: 10px;
+    transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+  .progress-steps {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+  .progress-step-dot {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    color: var(--grey-mid);
+    padding: 0.2rem 0.5rem;
+    border-radius: 100px;
+    background: #f5f0fa;
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+  .progress-step-dot.done {
+    background: var(--purple);
+    color: var(--white);
+  }
+  .progress-step-dot .dot-check {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid var(--grey-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    transition: var(--transition);
+    flex-shrink: 0;
+  }
+  .progress-step-dot.done .dot-check {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--purple);
+  }
+
+  /* ─── MARK COMPLETE BUTTON ─── */
+  .step-complete-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(194,167,207,0.15);
+  }
+  .mark-complete-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 100px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 2px solid var(--purple-light);
+    background: var(--white);
+    color: var(--purple);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .mark-complete-btn:hover {
+    border-color: var(--purple);
+    background: var(--purple-wash);
+  }
+  .mark-complete-btn.completed {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
+    pointer-events: none;
+  }
+  .mark-complete-btn .mc-icon {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    transition: var(--transition);
+  }
+  .mark-complete-btn.completed .mc-icon {
+    background: var(--white);
+    color: var(--purple);
+    border-color: var(--white);
+  }
+
+  /* ─── CERTIFICATE MODAL ─── */
+  .cert-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(51,0,68,0.6);
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .cert-overlay.visible {
+    display: flex;
+    animation: fadeUp 0.4s ease-out;
+  }
+  .cert-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(51,0,68,0.25);
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--purple) 0%, var(--lime) 50%, var(--orange) 100%);
+  }
+  .cert-badge {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--lime) 0%, var(--lime-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin: 0 auto 1.25rem;
+    box-shadow: 0 4px 20px rgba(187,214,74,0.4);
+  }
+  .cert-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.6rem;
+    color: var(--purple-dark);
+    margin-bottom: 0.25rem;
+  }
+  .cert-sub {
+    font-size: 0.95rem;
+    color: var(--grey-mid);
+    margin-bottom: 1.5rem;
+  }
+  .cert-name {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--purple);
+    margin-bottom: 0.25rem;
+  }
+  .cert-pathway {
+    font-size: 0.9rem;
+    color: var(--grey-dark);
+    margin-bottom: 0.15rem;
+  }
+  .cert-date {
+    font-size: 0.8rem;
+    color: var(--grey-mid);
+    margin-bottom: 1.75rem;
+  }
+  .cert-divider {
+    width: 60px; height: 2px;
+    background: var(--purple-light);
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+  }
+  .cert-logo {
+    max-width: 180px;
+    margin: 0 auto 1.5rem;
+    display: block;
+  }
+  .cert-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cert-close {
+    position: absolute;
+    top: 16px; right: 18px;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--grey-mid);
+    line-height: 1;
+  }
+
+  /* ─── COMPLETE BANNER ─── */
+  .complete-banner {
+    display: none;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #f0f7d6 0%, #e8f2c4 100%);
+    border: 1px solid var(--lime);
+    border-radius: var(--radius);
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .complete-banner.visible { display: block; animation: fadeUp 0.4s ease-out; }
+  .complete-banner p {
+    margin: 0 0 0.75rem;
+    font-weight: 600;
+    color: var(--lime-dark);
+    font-size: 0.95rem;
+  }
+
   /* ─── FOOTER ─── */
   .site-footer {
     background: var(--purple-dark);
@@ -694,8 +948,24 @@
     <div class="section-rule"></div>
     <p>This pathway is designed for educators working directly with autistic students. Work through the modules, activities, and resources below at your own pace.</p>
 
+    <!-- Progress Tracker -->
+    <div class="progress-tracker" id="pl-progress">
+      <div class="progress-tracker-top">
+        <h4>Your Progress</h4>
+        <span class="progress-pct" id="pl-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="pl-fill"></div>
+      </div>
+      <div class="progress-steps" id="pl-dots"></div>
+      <div class="complete-banner" id="pl-banner">
+        <p>&#127881; Pathway complete! You're ready for the workshop.</p>
+        <button class="btn btn-purple" onclick="showCert('pl')">View Certificate &rarr;</button>
+      </div>
+    </div>
+
     <!-- Step 1: Intro to Autism Module -->
-    <div class="step">
+    <div class="step" data-pw-step="pl" data-step-idx="0" data-step-label="Intro Module">
       <div class="step-header">
         <div class="step-num">1</div>
         <div class="step-title">Introduction to Autism Module</div>
@@ -709,10 +979,13 @@
           <button class="btn btn-purple" onclick="alert('This will open the Introduction to Autism module. (Demo only)')">Start Module &rarr;</button>
         </div>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pl" data-idx="0"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 2: Checklist & Reflection -->
-    <div class="step">
+    <div class="step" data-pw-step="pl" data-step-idx="1" data-step-label="Reflection">
       <div class="step-header">
         <div class="step-num">2</div>
         <div class="step-title">Reflect on Your Understanding</div>
@@ -740,10 +1013,13 @@
           <textarea class="field-textarea" id="pl-reflect2" data-key="pl_reflect2" placeholder="Describe any challenges (optional)&hellip;" style="min-height:70px;"></textarea>
         </div>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pl" data-idx="1"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 3: Virtual Classroom -->
-    <div class="step">
+    <div class="step" data-pw-step="pl" data-step-idx="2" data-step-label="Classroom">
       <div class="step-header">
         <div class="step-num">3</div>
         <div class="step-title">Explore: Virtual Classroom Environment</div>
@@ -864,10 +1140,13 @@
         <h4 id="tt-pl-title"></h4>
         <p id="tt-pl-info"></p>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pl" data-idx="2"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 4: Executive Functioning Webinar -->
-    <div class="step">
+    <div class="step" data-pw-step="pl" data-step-idx="3" data-step-label="EF Webinar">
       <div class="step-header">
         <div class="step-num">4</div>
         <div class="step-title">Watch: Executive Functioning Webinar</div>
@@ -888,10 +1167,13 @@
           <textarea class="field-textarea" id="pl-ef-q2" data-key="pl_ef_q2" placeholder="Share your ideas&hellip;"></textarea>
         </div>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pl" data-idx="3"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 5: Kookaburra Resource -->
-    <div class="step">
+    <div class="step" data-pw-step="pl" data-step-idx="4" data-step-label="Kookaburra">
       <div class="step-header">
         <div class="step-num">5</div>
         <div class="step-title">Resource: Djarmbi the Kookaburra</div>
@@ -904,10 +1186,13 @@
           <button class="btn btn-orange" onclick="alert('This will open the Djarmbi the Kookaburra resource. (Demo only)')">Explore Resource &rarr;</button>
         </div>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pl" data-idx="4"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 6: Planning Tool -->
-    <div class="step">
+    <div class="step" data-pw-step="pl" data-step-idx="5" data-step-label="Planning Tool">
       <div class="step-header">
         <div class="step-num">6</div>
         <div class="step-title">Complete the Planning Tool</div>
@@ -919,6 +1204,9 @@
           <p>Use this template to map your student's unique profile and plan targeted support strategies. Complete this before your workshop to bring along for discussion.</p>
           <a href="https://www.positivepartnerships.com.au/resources/practical-tools-information-sheets/diversity-wheel-planning-tool" class="btn btn-lime" target="_blank" rel="noopener">Open Planning Tool &rarr;</a>
         </div>
+      </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pl" data-idx="5"><span class="mc-icon"></span> Mark as Complete</button>
       </div>
     </div>
 
@@ -935,8 +1223,24 @@
     <div class="section-rule"></div>
     <p>This pathway is designed for parents and carers of autistic young people. Explore modules, interactive environments, and resources to deepen your understanding and build strategies for home, school, and community.</p>
 
+    <!-- Progress Tracker -->
+    <div class="progress-tracker" id="pc-progress">
+      <div class="progress-tracker-top">
+        <h4>Your Progress</h4>
+        <span class="progress-pct" id="pc-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="pc-fill"></div>
+      </div>
+      <div class="progress-steps" id="pc-dots"></div>
+      <div class="complete-banner" id="pc-banner">
+        <p>&#127881; Pathway complete! You're ready for the workshop.</p>
+        <button class="btn btn-orange" onclick="showCert('pc')">View Certificate &rarr;</button>
+      </div>
+    </div>
+
     <!-- Step 1: Intro to Autism Module -->
-    <div class="step">
+    <div class="step" data-pw-step="pc" data-step-idx="0" data-step-label="Intro Module">
       <div class="step-header">
         <div class="step-num">1</div>
         <div class="step-title">Introduction to Autism Module</div>
@@ -950,10 +1254,13 @@
           <button class="btn btn-purple" onclick="alert('This will open the Introduction to Autism module. (Demo only)')">Start Module &rarr;</button>
         </div>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pc" data-idx="0"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 2: Checklist & Reflection -->
-    <div class="step">
+    <div class="step" data-pw-step="pc" data-step-idx="1" data-step-label="Reflection">
       <div class="step-header">
         <div class="step-num">2</div>
         <div class="step-title">Reflect on Your Understanding</div>
@@ -981,10 +1288,13 @@
           <textarea class="field-textarea" id="pc-reflect2" data-key="pc_reflect2" placeholder="Describe the situation (optional)&hellip;" style="min-height:70px;"></textarea>
         </div>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pc" data-idx="1"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 3: Interactive Environments -->
-    <div class="step">
+    <div class="step" data-pw-step="pc" data-step-idx="2" data-step-label="Environments">
       <div class="step-header">
         <div class="step-num">3</div>
         <div class="step-title">Explore: Environments That Impact Your Child</div>
@@ -1276,10 +1586,13 @@
         <h4 id="tt-pc-title"></h4>
         <p id="tt-pc-info"></p>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pc" data-idx="2"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 4: Sensory Processing Webinars -->
-    <div class="step">
+    <div class="step" data-pw-step="pc" data-step-idx="3" data-step-label="Sensory Webinars">
       <div class="step-header">
         <div class="step-num">4</div>
         <div class="step-title">Watch: Sensory Processing Webinars</div>
@@ -1298,10 +1611,13 @@
       <div class="reflection-card" style="margin-top:1.25rem;">
         <p><strong>Reflect:</strong> Think about your child's sensory preferences. What sensory input do they seek out? What do they try to avoid? How might this understanding change the way you approach daily routines?</p>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pc" data-idx="3"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 5: Kookaburra Resource -->
-    <div class="step">
+    <div class="step" data-pw-step="pc" data-step-idx="4" data-step-label="Kookaburra">
       <div class="step-header">
         <div class="step-num">5</div>
         <div class="step-title">Resource: Djarmbi the Kookaburra</div>
@@ -1314,10 +1630,13 @@
           <button class="btn btn-orange" onclick="alert('This will open the Djarmbi the Kookaburra resource. (Demo only)')">Explore Resource &rarr;</button>
         </div>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pc" data-idx="4"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
     <!-- Step 6: Planning Tool -->
-    <div class="step">
+    <div class="step" data-pw-step="pc" data-step-idx="5" data-step-label="Planning Tool">
       <div class="step-header">
         <div class="step-num">6</div>
         <div class="step-title">Complete the Planning Tool</div>
@@ -1330,11 +1649,35 @@
           <a href="https://www.positivepartnerships.com.au/resources/practical-tools-information-sheets/diversity-wheel-planning-tool" class="btn btn-lime" target="_blank" rel="noopener">Open Planning Tool &rarr;</a>
         </div>
       </div>
+      <div class="step-complete-row">
+        <button class="mark-complete-btn" data-pw="pc" data-idx="5"><span class="mc-icon"></span> Mark as Complete</button>
+      </div>
     </div>
 
   </div><!-- /pw-pc -->
 
 </main>
+
+<!-- ═══════════ CERTIFICATE MODAL ═══════════ -->
+<div class="cert-overlay" id="cert-modal">
+  <div class="cert-card">
+    <button class="cert-close" onclick="document.getElementById('cert-modal').classList.remove('visible')">&times;</button>
+    <div class="cert-badge">&#127942;</div>
+    <div class="cert-title">Certificate of Completion</div>
+    <div class="cert-sub">Positive Partnerships Online Learning</div>
+    <div class="cert-divider"></div>
+    <img src="PP Logo.png" alt="Positive Partnerships" class="cert-logo">
+    <div class="cert-name" id="cert-name">Learner</div>
+    <div class="cert-pathway" id="cert-pathway">Professional Learning Pathway</div>
+    <div class="cert-date" id="cert-date"></div>
+    <div class="cert-divider" style="margin-top:1.5rem;"></div>
+    <p style="font-size:0.85rem; color:var(--grey-mid); margin:1rem 0 1.5rem;">This certifies completion of all pre-learning activities in preparation for the Positive Partnerships workshop.</p>
+    <div class="cert-actions">
+      <button class="btn btn-purple" onclick="window.print()">Print Certificate</button>
+      <button class="btn btn-outline" onclick="document.getElementById('cert-modal').classList.remove('visible')">Close</button>
+    </div>
+  </div>
+</div>
 
 <footer class="site-footer">
   <strong>Positive Partnerships</strong> &mdash; Working together to support autistic school-aged students &bull; &copy; 2026
@@ -1370,6 +1713,111 @@
     document.getElementById('choose-heading').scrollIntoView({ behavior: 'smooth' });
   };
   pwCards.forEach(c => c.addEventListener('click', () => openPW(c.dataset.pw)));
+
+  // ═══════════════════════════════════════
+  // ─── PROGRESS TRACKING SYSTEM ───
+  // ═══════════════════════════════════════
+  const TOTAL_STEPS = 6;
+
+  let plProgress = load('ol_pl_progress', Array(TOTAL_STEPS).fill(false));
+  let pcProgress = load('ol_pc_progress', Array(TOTAL_STEPS).fill(false));
+
+  // Get step labels from data attributes
+  function getStepLabels(pw) {
+    const steps = document.querySelectorAll('[data-pw-step="' + pw + '"]');
+    return Array.from(steps).map(s => s.dataset.stepLabel || ('Step ' + (parseInt(s.dataset.stepIdx) + 1)));
+  }
+
+  function renderProgress(pw) {
+    const data = pw === 'pl' ? plProgress : pcProgress;
+    const labels = getStepLabels(pw);
+    const count = data.filter(Boolean).length;
+    const pct = Math.round((count / TOTAL_STEPS) * 100);
+
+    // Update percentage
+    document.getElementById(pw + '-pct').textContent = pct + '%';
+
+    // Update fill bar
+    document.getElementById(pw + '-fill').style.width = pct + '%';
+
+    // Update step dots
+    const dotsContainer = document.getElementById(pw + '-dots');
+    dotsContainer.innerHTML = '';
+    labels.forEach((label, i) => {
+      const dot = document.createElement('span');
+      dot.className = 'progress-step-dot' + (data[i] ? ' done' : '');
+      dot.innerHTML = '<span class="dot-check">' + (data[i] ? '&#10003;' : '') + '</span>' + label;
+      dotsContainer.appendChild(dot);
+    });
+
+    // Update mark-complete buttons
+    document.querySelectorAll('.mark-complete-btn[data-pw="' + pw + '"]').forEach(btn => {
+      const idx = parseInt(btn.dataset.idx);
+      if (data[idx]) {
+        btn.classList.add('completed');
+        btn.innerHTML = '<span class="mc-icon">&#10003;</span> Completed';
+      } else {
+        btn.classList.remove('completed');
+        btn.innerHTML = '<span class="mc-icon"></span> Mark as Complete';
+      }
+    });
+
+    // Update step number styling
+    document.querySelectorAll('[data-pw-step="' + pw + '"]').forEach(step => {
+      const idx = parseInt(step.dataset.stepIdx);
+      const numEl = step.querySelector('.step-num');
+      if (numEl && data[idx]) {
+        numEl.style.background = '#BBD64A';
+        numEl.style.color = '#330044';
+        numEl.innerHTML = '&#10003;';
+      } else if (numEl) {
+        numEl.style.background = '';
+        numEl.style.color = '';
+        numEl.textContent = idx + 1;
+      }
+    });
+
+    // Show/hide completion banner
+    const banner = document.getElementById(pw + '-banner');
+    if (count === TOTAL_STEPS) {
+      banner.classList.add('visible');
+    } else {
+      banner.classList.remove('visible');
+    }
+
+    // Save
+    save('ol_' + pw + '_progress', data);
+  }
+
+  // Mark-complete button handlers
+  document.querySelectorAll('.mark-complete-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pw = btn.dataset.pw;
+      const idx = parseInt(btn.dataset.idx);
+      const data = pw === 'pl' ? plProgress : pcProgress;
+      data[idx] = !data[idx]; // toggle
+      renderProgress(pw);
+    });
+  });
+
+  // Certificate
+  window.showCert = function(pw) {
+    const modal = document.getElementById('cert-modal');
+    const pathwayName = pw === 'pl' ? 'Professional Learning Pathway' : 'Parents & Carers Pathway';
+    document.getElementById('cert-pathway').textContent = pathwayName;
+    document.getElementById('cert-date').textContent = 'Completed ' + new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+    document.getElementById('cert-name').textContent = 'Workshop Participant';
+    modal.classList.add('visible');
+  };
+
+  // Close cert on overlay click
+  document.getElementById('cert-modal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('visible');
+  });
+
+  // Initial render
+  renderProgress('pl');
+  renderProgress('pc');
 
   // ─── PL CHECKLIST ───
   const plItems = [
@@ -1472,7 +1920,6 @@
         let left = rect.left + rect.width / 2;
         let top = rect.bottom + 12;
 
-        // Keep tooltip on screen
         if (left + 160 > window.innerWidth) left = window.innerWidth - 180;
         if (left - 160 < 0) left = 20;
         if (top + 200 > window.innerHeight) top = rect.top - 200;
@@ -1487,7 +1934,6 @@
   setupHotspots('#classroom-env', 'env-tooltip-pl', 'tt-pl-title', 'tt-pl-info');
   setupHotspots('#pw-pc', 'env-tooltip-pc', 'tt-pc-title', 'tt-pc-info');
 
-  // Close tooltips on outside click
   document.addEventListener('click', () => {
     document.querySelectorAll('.env-tooltip').forEach(t => t.classList.remove('visible'));
   });

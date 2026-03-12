@@ -962,6 +962,9 @@
         <p>&#127881; Pathway complete! You're ready for the workshop.</p>
         <button class="btn btn-purple" onclick="showCert('pl')">View Certificate &rarr;</button>
       </div>
+      <div style="text-align:right; margin-top:0.5rem;">
+        <button class="btn btn-sm btn-outline" onclick="resetProgress('pl')" style="font-size:0.75rem; padding:0.3rem 0.75rem; opacity:0.6;">Reset Progress</button>
+      </div>
     </div>
 
     <!-- Step 1: Intro to Autism Module -->
@@ -1236,6 +1239,9 @@
       <div class="complete-banner" id="pc-banner">
         <p>&#127881; Pathway complete! You're ready for the workshop.</p>
         <button class="btn btn-orange" onclick="showCert('pc')">View Certificate &rarr;</button>
+      </div>
+      <div style="text-align:right; margin-top:0.5rem;">
+        <button class="btn btn-sm btn-outline" onclick="resetProgress('pc')" style="font-size:0.75rem; padding:0.3rem 0.75rem; opacity:0.6;">Reset Progress</button>
       </div>
     </div>
 
@@ -1808,6 +1814,16 @@
     document.getElementById('cert-date').textContent = 'Completed ' + new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
     document.getElementById('cert-name').textContent = 'Workshop Participant';
     modal.classList.add('visible');
+  };
+
+  // Reset progress
+  window.resetProgress = function(pw) {
+    if (pw === 'pl') {
+      plProgress = Array(TOTAL_STEPS).fill(false);
+    } else {
+      pcProgress = Array(TOTAL_STEPS).fill(false);
+    }
+    renderProgress(pw);
   };
 
   // Close cert on overlay click

@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Learning Space | Positive Partnerships</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #712D90;
+    --purple-dark: #330044;
+    --purple-light: #C2A7CF;
+    --purple-wash: #f3ecf7;
+    --lime: #BBD64A;
+    --lime-dark: #9ab83a;
+    --red: #F15B40;
+    --orange: #F7941E;
+    --grey-dark: #333333;
+    --grey-mid: #999999;
+    --grey-light: #CCCCCC;
+    --white: #FFFFFF;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 2px 16px rgba(51,0,68,0.07);
+    --shadow-lg: 0 12px 40px rgba(51,0,68,0.13);
+    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--grey-dark);
+    background: #faf8fc;
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 55%, #8e4aad 100%);
+    color: var(--white);
+    padding: 2.5rem 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -8%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(194,167,207,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .header-logo {
+    max-width: 260px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  .header-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 4.5vw, 2.3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .header-subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+  .header-badge {
+    display: inline-block;
+    margin-top: 1.25rem;
+    background: rgba(255,255,255,0.13);
+    border: 1px solid rgba(255,255,255,0.22);
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ─── MAIN ─── */
+  .main-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+  h2 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.75rem;
+    color: var(--purple-dark);
+    margin-bottom: 0.25rem;
+  }
+  .section-rule {
+    width: 48px; height: 3px;
+    background: var(--lime);
+    border-radius: 3px;
+    margin: 0.6rem 0 1.5rem;
+  }
+  h3 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--purple);
+    margin: 2rem 0 0.6rem;
+  }
+  p { margin-bottom: 1rem; }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.75rem;
+    margin-bottom: 1.75rem;
+    border: 1px solid rgba(194,167,207,0.15);
+  }
+  .card-purple { background: var(--purple-wash); border-color: var(--purple-light); }
+  .card-highlight { border-left: 4px solid var(--purple); background: var(--purple-wash); }
+
+  /* ─── BUTTONS ─── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+  }
+  .btn-purple { background: var(--purple); color: var(--white); }
+  .btn-purple:hover { background: var(--purple-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(113,45,144,0.3); }
+  .btn-lime { background: var(--lime); color: var(--purple-dark); }
+  .btn-lime:hover { background: var(--lime-dark); transform: translateY(-1px); }
+  .btn-orange { background: var(--orange); color: var(--white); }
+  .btn-orange:hover { background: #e5860f; transform: translateY(-1px); }
+  .btn-outline { background: transparent; border: 2px solid var(--purple); color: var(--purple); }
+  .btn-outline:hover { background: var(--purple); color: var(--white); }
+  .btn-sm { padding: 0.5rem 1rem; font-size: 0.82rem; }
+
+  /* ─── PATHWAY CHOOSER ─── */
+  .pathway-chooser {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 640px) { .pathway-chooser { grid-template-columns: 1fr; } }
+  .pw-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 2px solid transparent;
+    padding: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pw-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .pw-card[data-pw="pl"]::before { background: var(--purple); }
+  .pw-card[data-pw="pc"]::before { background: var(--orange); }
+  .pw-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--purple-light); }
+  .pw-card.active { border-color: var(--purple); box-shadow: var(--shadow-lg); }
+  .pw-card.dimmed { opacity: 0.3; pointer-events: none; transform: scale(0.97); }
+  .pw-icon {
+    width: 64px; height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin: 0 auto 1rem;
+  }
+  .pw-card[data-pw="pl"] .pw-icon { background: var(--purple-wash); }
+  .pw-card[data-pw="pc"] .pw-icon { background: #fef0e4; }
+  .pw-card h3 { font-size: 1.1rem; color: var(--purple-dark); margin: 0 0 0.3rem; }
+  .pw-card p { font-size: 0.88rem; color: var(--grey-mid); margin: 0 0 1.25rem; }
+  .pw-choose-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--white);
+  }
+  .pw-card[data-pw="pl"] .pw-choose-btn { background: var(--purple); }
+  .pw-card[data-pw="pc"] .pw-choose-btn { background: var(--orange); }
+  .pw-choose-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+  /* ─── BACK LINK ─── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--purple);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    margin-bottom: 1.5rem;
+  }
+  .back-link:hover { color: var(--purple-dark); }
+
+  /* ─── PATHWAY SECTIONS ─── */
+  .pathway-section { display: none; animation: fadeUp 0.5s ease-out; }
+  .pathway-section.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ─── STEP HEADER ─── */
+  .step { margin-bottom: 2.5rem; }
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .step-num {
+    width: 36px; height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    background: var(--purple);
+    color: var(--white);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--purple-dark);
+  }
+
+  /* ─── MODULE CTA ─── */
+  .module-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.75rem;
+    background: linear-gradient(135deg, var(--purple-wash) 0%, #ece3f1 100%);
+    border-radius: var(--radius);
+    border: 1px solid var(--purple-light);
+    flex-wrap: wrap;
+  }
+  .module-icon-wrap {
+    width: 80px; height: 80px;
+    min-width: 80px;
+    border-radius: 16px;
+    background: var(--purple);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 16px rgba(113,45,144,0.25);
+  }
+  .module-cta-text { flex: 1; min-width: 200px; }
+  .module-cta-text h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--purple-dark);
+    margin-bottom: 0.3rem;
+  }
+  .module-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    color: var(--grey-mid);
+    margin-bottom: 0.6rem;
+  }
+  .module-cta-text p { font-size: 0.9rem; color: var(--grey-dark); margin-bottom: 0.85rem; }
+
+  /* ─── CHECKLIST ─── */
+  .checklist-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.75rem;
+    border: 1px solid rgba(194,167,207,0.15);
+    margin-bottom: 1.75rem;
+  }
+  .checklist-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .checklist-title-row h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--purple-dark);
+  }
+  .checklist-badge {
+    font-size: 0.8rem;
+    color: var(--purple);
+    background: var(--purple-wash);
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    font-weight: 600;
+  }
+  .cl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(194,167,207,0.15);
+  }
+  .cl-item:last-child { border-bottom: none; }
+  .cl-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px; height: 22px;
+    min-width: 22px;
+    margin-top: 2px;
+    border: 2px solid var(--purple-light);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    background: var(--white);
+  }
+  .cl-item input[type="checkbox"]:checked { background: var(--purple); border-color: var(--purple); }
+  .cl-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 6px;
+    width: 5px; height: 10px;
+    border: solid var(--white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .cl-item label { font-size: 0.92rem; cursor: pointer; line-height: 1.5; }
+  .cl-item input:checked + label { color: var(--grey-mid); text-decoration: line-through; }
+
+  /* ─── TEXT FIELDS ─── */
+  .field-group { margin-bottom: 1.25rem; }
+  .field-label { display: block; font-weight: 600; font-size: 0.9rem; color: var(--purple-dark); margin-bottom: 0.4rem; }
+  .field-sub { display: block; font-size: 0.8rem; color: var(--grey-mid); margin-bottom: 0.5rem; }
+  .field-textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--purple-light);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    resize: vertical;
+    transition: var(--transition);
+    color: var(--grey-dark);
+    line-height: 1.6;
+    background: var(--white);
+  }
+  .field-textarea:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px rgba(113,45,144,0.1); }
+
+  /* ─── VIDEO EMBED ─── */
+  .video-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 1.25rem 0;
+    background: var(--grey-dark);
+  }
+  .video-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+
+  /* ─── REFLECTION CARD ─── */
+  .reflection-card {
+    background: #fef8ee;
+    border: 1px solid #f5ddb5;
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem 0;
+  }
+  .reflection-card p { margin: 0; font-size: 0.92rem; color: #8a6b2f; line-height: 1.6; }
+  .reflection-card strong { color: var(--orange); }
+
+  /* ─── RESOURCE CTA ─── */
+  .resource-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(194,167,207,0.15);
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+  }
+  .resource-cta img {
+    width: 180px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
+  }
+  .resource-cta-text { flex: 1; min-width: 200px; }
+  .resource-cta-text h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--purple-dark);
+    margin-bottom: 0.4rem;
+  }
+  .resource-cta-text p { font-size: 0.9rem; color: var(--grey-dark); margin-bottom: 0.85rem; }
+
+  /* ─── SVG ENVIRONMENT ─── */
+  .env-container {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin: 1.25rem 0 1.75rem;
+    background: var(--white);
+  }
+  .env-container svg { display: block; width: 100%; height: auto; }
+  .env-hotspot {
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .env-hotspot:hover { filter: brightness(1.15); }
+  .env-hotspot:hover .hotspot-pulse { opacity: 1; }
+  .hotspot-pulse {
+    opacity: 0.6;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { r: 14; opacity: 0.6; }
+    50% { r: 18; opacity: 0.3; }
+  }
+
+  /* Tooltip */
+  .env-tooltip {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    max-width: 320px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--purple-light);
+    padding: 1.25rem;
+    pointer-events: auto;
+  }
+  .env-tooltip.visible { display: block; animation: fadeUp 0.25s ease-out; }
+  .env-tooltip h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--purple);
+    margin-bottom: 0.4rem;
+  }
+  .env-tooltip p { font-size: 0.85rem; line-height: 1.55; margin-bottom: 0; color: var(--grey-dark); }
+  .env-tooltip-close {
+    position: absolute;
+    top: 8px; right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--grey-mid);
+    line-height: 1;
+  }
+  .env-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .env-legend span {
+    font-size: 0.78rem;
+    color: var(--grey-mid);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .env-legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* ─── ENV TAB SWITCHER ─── */
+  .env-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .env-tab-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    border: 2px solid var(--purple-light);
+    background: var(--white);
+    color: var(--purple);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .env-tab-btn:hover { border-color: var(--purple); }
+  .env-tab-btn.active { background: var(--purple); color: var(--white); border-color: var(--purple); }
+  .env-scene { display: none; }
+  .env-scene.active { display: block; }
+
+  /* ─── KEY POINTS ─── */
+  .key-points {
+    background: var(--purple-wash);
+    border: 1px solid var(--purple-light);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.25rem;
+  }
+  .key-points h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--purple);
+    margin-bottom: 0.75rem;
+  }
+  .key-points ul { list-style: none; padding: 0; margin: 0; }
+  .key-points ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--purple-dark);
+  }
+  .key-points ul li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.55rem;
+    width: 8px; height: 8px;
+    background: var(--lime);
+    border-radius: 50%;
+  }
+
+  /* ─── PLANNING TOOL CTA ─── */
+  .planning-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f0f7d6 0%, #e8f2c4 100%);
+    border-radius: var(--radius);
+    border: 1px solid var(--lime);
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+  }
+  .planning-cta-icon {
+    width: 56px; height: 56px;
+    min-width: 56px;
+    border-radius: 14px;
+    background: var(--lime);
+    color: var(--purple-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  .planning-cta-text { flex: 1; min-width: 200px; }
+  .planning-cta-text h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--purple-dark);
+    margin-bottom: 0.3rem;
+  }
+  .planning-cta-text p { font-size: 0.9rem; color: var(--grey-dark); margin-bottom: 0.75rem; }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    background: var(--purple-dark);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+  }
+  .site-footer strong { color: var(--white); font-weight: 500; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    .site-header { padding: 1.5rem 1rem 1.25rem; }
+    .header-logo { max-width: 200px; }
+    .main-wrap { padding: 1.5rem 1rem 2rem; }
+    h2 { font-size: 1.4rem; }
+    .card { padding: 1.25rem; }
+    .module-cta, .resource-cta { flex-direction: column; }
+    .resource-cta img { width: 140px; }
+  }
+
+  @media print {
+    .site-header { background: var(--white); color: var(--grey-dark); }
+    .card, .checklist-card { box-shadow: none; border: 1px solid var(--grey-light); }
+    .video-wrap, .env-container { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <img src="Logo Just Text.png" alt="Positive Partnerships" class="header-logo">
+    <h1 class="header-title">Online Learning Space</h1>
+    <p class="header-subtitle">Self-paced learning modules, resources, and interactive activities</p>
+    <span class="header-badge">&#127891; Choose your learning pathway below</span>
+  </div>
+</header>
+
+<main class="main-wrap">
+
+  <!-- ─── INTRO ─── -->
+  <h2>Welcome</h2>
+  <div class="section-rule"></div>
+  <div class="card">
+    <p>Welcome to the Positive Partnerships online learning space. Here you'll find self-paced modules, interactive activities, and resources tailored to your role — whether you're an educator or a parent or carer.</p>
+    <p style="margin-bottom:0;">Select your pathway below to begin your learning journey.</p>
+  </div>
+
+  <!-- ─── PATHWAY CHOOSER ─── -->
+  <h2 id="choose-heading">Choose Your Pathway</h2>
+  <div class="section-rule"></div>
+
+  <div class="pathway-chooser" id="pw-chooser">
+    <div class="pw-card" data-pw="pl">
+      <div class="pw-icon">&#127891;</div>
+      <h3>Professional Learning</h3>
+      <p>For educators — build your knowledge and skills to support autistic students in your school</p>
+      <button class="pw-choose-btn">Enter Pathway &rarr;</button>
+    </div>
+    <div class="pw-card" data-pw="pc">
+      <div class="pw-icon">&#128106;</div>
+      <h3>Parents &amp; Carers</h3>
+      <p>For families — understand your child's needs and learn strategies for home, school, and community</p>
+      <button class="pw-choose-btn">Enter Pathway &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- ═══════════ PROFESSIONAL LEARNING ═══════════ -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div class="pathway-section" id="pw-pl">
+    <button class="back-link" onclick="closePW()">&larr; Back to all pathways</button>
+
+    <h2>Professional Learning</h2>
+    <div class="section-rule"></div>
+    <p>This pathway is designed for educators working directly with autistic students. Work through the modules, activities, and resources below at your own pace.</p>
+
+    <!-- Step 1: Intro to Autism Module -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div class="step-title">Introduction to Autism Module</div>
+      </div>
+      <div class="module-cta">
+        <div class="module-icon-wrap">&#128218;</div>
+        <div class="module-cta-text">
+          <h4>Introduction to Autism</h4>
+          <div class="module-badge">&#9200; 2.5 hours &bull; Online &bull; Self-paced</div>
+          <p>This comprehensive module explores what autism is, how it presents in school-aged students, and the key principles for creating inclusive educational environments. Covers communication, sensory processing, executive functioning, and strengths-based approaches.</p>
+          <button class="btn btn-purple" onclick="alert('This will open the Introduction to Autism module. (Demo only)')">Start Module &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Checklist & Reflection -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div class="step-title">Reflect on Your Understanding</div>
+      </div>
+      <p>Take a moment to consider what you already know about autism in education, and what you'd like to learn more about.</p>
+
+      <div class="checklist-card">
+        <div class="checklist-title-row">
+          <h4>I feel confident in my understanding of&hellip;</h4>
+          <span class="checklist-badge" id="pl-cl-badge">0 selected</span>
+        </div>
+        <div id="pl-checklist">
+          <!-- JS populated -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="field-group">
+          <label class="field-label" for="pl-reflect1">What do you most want to learn about autism in education?</label>
+          <textarea class="field-textarea" id="pl-reflect1" data-key="pl_reflect1" placeholder="Share your thoughts&hellip;"></textarea>
+        </div>
+        <div class="field-group" style="margin-bottom:0;">
+          <label class="field-label" for="pl-reflect2">Are there specific challenges you're facing in your classroom?</label>
+          <span class="field-sub">Optional — helps us understand your context</span>
+          <textarea class="field-textarea" id="pl-reflect2" data-key="pl_reflect2" placeholder="Describe any challenges (optional)&hellip;" style="min-height:70px;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Virtual Classroom -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div class="step-title">Explore: Virtual Classroom Environment</div>
+      </div>
+      <p>Click on the highlighted areas in this classroom to learn how the physical environment can impact autistic students. Consider what adjustments you could make in your own classroom.</p>
+
+      <div class="env-container" id="classroom-env">
+        <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" style="background:#e8f4f8;">
+          <!-- Floor -->
+          <rect x="0" y="320" width="900" height="180" fill="#d4c4a8"/>
+          <rect x="0" y="320" width="900" height="4" fill="#c4b498"/>
+          <!-- Back wall -->
+          <rect x="0" y="0" width="900" height="320" fill="#f0ebe3"/>
+          <!-- Window -->
+          <rect x="40" y="40" width="180" height="200" rx="4" fill="#c5e8f7" stroke="#a0937d" stroke-width="3"/>
+          <line x1="130" y1="40" x2="130" y2="240" stroke="#a0937d" stroke-width="2"/>
+          <line x1="40" y1="140" x2="220" y2="140" stroke="#a0937d" stroke-width="2"/>
+          <rect x="40" y="232" width="180" height="12" rx="2" fill="#a0937d"/>
+          <!-- Blinds -->
+          <line x1="50" y1="48" x2="220" y2="48" stroke="#d9d2c7" stroke-width="1" opacity="0.5"/>
+          <line x1="50" y1="58" x2="220" y2="58" stroke="#d9d2c7" stroke-width="1" opacity="0.5"/>
+          <!-- Whiteboard -->
+          <rect x="300" y="40" width="300" height="170" rx="4" fill="#ffffff" stroke="#b0b0b0" stroke-width="2"/>
+          <rect x="310" y="50" width="280" height="150" rx="2" fill="#f8f8f8"/>
+          <text x="450" y="100" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">Today's Schedule</text>
+          <rect x="380" y="115" width="140" height="8" rx="2" fill="#C2A7CF" opacity="0.5"/>
+          <rect x="380" y="130" width="120" height="8" rx="2" fill="#C2A7CF" opacity="0.3"/>
+          <rect x="380" y="145" width="130" height="8" rx="2" fill="#C2A7CF" opacity="0.4"/>
+          <rect x="380" y="160" width="100" height="8" rx="2" fill="#C2A7CF" opacity="0.3"/>
+          <!-- Clock -->
+          <circle cx="680" cy="80" r="30" fill="#fff" stroke="#b0b0b0" stroke-width="2"/>
+          <line x1="680" y1="80" x2="680" y2="60" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+          <line x1="680" y1="80" x2="695" y2="85" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Posters on wall (busy) -->
+          <rect x="640" y="130" width="70" height="90" rx="3" fill="#FFE0B2" stroke="#F7941E" stroke-width="1"/>
+          <rect x="720" y="140" width="65" height="80" rx="3" fill="#E1BEE7" stroke="#712D90" stroke-width="1"/>
+          <rect x="795" y="125" width="60" height="85" rx="3" fill="#C8E6C9" stroke="#66BB6A" stroke-width="1"/>
+          <rect x="640" y="230" width="55" height="55" rx="3" fill="#BBDEFB" stroke="#42A5F5" stroke-width="1"/>
+          <rect x="705" y="235" width="70" height="50" rx="3" fill="#FFCDD2" stroke="#EF5350" stroke-width="1"/>
+          <rect x="785" y="225" width="65" height="65" rx="3" fill="#FFF9C4" stroke="#FFEE58" stroke-width="1"/>
+          <!-- Teacher desk -->
+          <rect x="330" y="260" width="240" height="55" rx="4" fill="#8d6e4a" stroke="#6d5436" stroke-width="2"/>
+          <rect x="340" y="268" width="50" height="38" rx="2" fill="#a0a0a0"/>
+          <rect x="400" y="275" width="30" height="25" rx="2" fill="#e0e0e0"/>
+          <!-- Student desks -->
+          <rect x="60" y="350" width="110" height="50" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+          <rect x="200" y="350" width="110" height="50" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+          <rect x="340" y="350" width="110" height="50" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+          <rect x="480" y="350" width="110" height="50" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+          <rect x="620" y="350" width="110" height="50" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+          <rect x="130" y="430" width="110" height="50" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+          <rect x="340" y="430" width="110" height="50" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+          <rect x="550" y="430" width="110" height="50" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+          <!-- Overhead lights -->
+          <rect x="150" y="0" width="200" height="8" rx="2" fill="#f5f5dc" opacity="0.8"/>
+          <rect x="450" y="0" width="200" height="8" rx="2" fill="#f5f5dc" opacity="0.8"/>
+          <!-- Quiet corner -->
+          <rect x="770" y="340" width="120" height="120" rx="6" fill="#e8ddf0" stroke="#C2A7CF" stroke-width="1.5" stroke-dasharray="4"/>
+          <rect x="785" y="370" width="40" height="50" rx="8" fill="#d4b8e0"/>
+          <text x="830" y="490" text-anchor="middle" font-family="Arial" font-size="9" fill="#712D90">Quiet Space</text>
+          <!-- Door -->
+          <rect x="850" y="140" width="45" height="175" rx="3" fill="#b8935a" stroke="#8d6e4a" stroke-width="2"/>
+          <circle cx="860" cy="228" r="4" fill="#d4a76a"/>
+
+          <!-- ═══ HOTSPOTS ═══ -->
+          <!-- Lighting -->
+          <g class="env-hotspot" data-title="Lighting" data-info="Fluorescent overhead lights can cause discomfort, headaches, and sensory overload for autistic students. Consider using natural light where possible, installing dimmable lights, or adding light filters. Some students may benefit from wearing a cap or sunglasses indoors.">
+            <circle class="hotspot-pulse" cx="250" cy="4" r="14" fill="#F15B40" opacity="0.6"/>
+            <circle cx="250" cy="4" r="10" fill="#F15B40" stroke="#fff" stroke-width="2"/>
+            <text x="250" y="8" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+          </g>
+          <!-- Window / Sensory Input -->
+          <g class="env-hotspot" data-title="Windows &amp; Natural Light" data-info="Windows provide natural light (which is gentler than fluorescent) but can also bring distracting visual input, glare, and outside noise. Consider adjustable blinds, and seating students who are easily distracted away from windows. Natural light is generally preferred over harsh artificial lighting.">
+            <circle class="hotspot-pulse" cx="130" cy="140" r="14" fill="#F7941E" opacity="0.6"/>
+            <circle cx="130" cy="140" r="10" fill="#F7941E" stroke="#fff" stroke-width="2"/>
+            <text x="130" y="144" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+          </g>
+          <!-- Visual schedule -->
+          <g class="env-hotspot" data-title="Visual Schedule" data-info="A clearly visible daily schedule reduces anxiety by helping students know what comes next. Use simple language, visual icons, and consistent placement. Update it throughout the day. This supports executive functioning and helps with transitions between activities.">
+            <circle class="hotspot-pulse" cx="450" cy="125" r="14" fill="#BBD64A" opacity="0.6"/>
+            <circle cx="450" cy="125" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+            <text x="450" y="129" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+          </g>
+          <!-- Wall displays -->
+          <g class="env-hotspot" data-title="Wall Displays &amp; Visual Clutter" data-info="While displays can be educational, too many posters, colours, and visual elements create sensory overload. Autistic students may find it difficult to filter out visual 'noise'. Keep displays organised, use calm colours, and consider having some bare wall space. Less is more.">
+            <circle class="hotspot-pulse" cx="730" cy="180" r="14" fill="#F15B40" opacity="0.6"/>
+            <circle cx="730" cy="180" r="10" fill="#F15B40" stroke="#fff" stroke-width="2"/>
+            <text x="730" y="184" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+          </g>
+          <!-- Desk arrangement -->
+          <g class="env-hotspot" data-title="Seating Arrangement" data-info="The layout of desks significantly affects autistic students. Group seating can be overwhelming — consider offering individual desk options or quiet work spaces. Some students work better facing a wall or away from high-traffic areas. Flexible seating (wobble cushions, standing desks) can support regulation.">
+            <circle class="hotspot-pulse" cx="395" cy="375" r="14" fill="#F7941E" opacity="0.6"/>
+            <circle cx="395" cy="375" r="10" fill="#F7941E" stroke="#fff" stroke-width="2"/>
+            <text x="395" y="379" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+          </g>
+          <!-- Quiet corner -->
+          <g class="env-hotspot" data-title="Quiet / Regulation Space" data-info="A designated calm-down or regulation space is essential. This isn't a 'time out' area — it's a proactive tool where students can go to self-regulate before reaching crisis point. Include soft seating, fidget tools, noise-cancelling headphones, and low lighting. Never remove access as a consequence.">
+            <circle class="hotspot-pulse" cx="830" cy="390" r="14" fill="#BBD64A" opacity="0.6"/>
+            <circle cx="830" cy="390" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+            <text x="830" y="394" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+          </g>
+          <!-- Door / Transitions -->
+          <g class="env-hotspot" data-title="Transitions &amp; Movement" data-info="Doorways and transitions between activities or spaces can be challenging. Give advance warnings before transitions (visual timers, verbal prompts). Consider allowing students to leave slightly before or after the main group to avoid crowded, noisy corridors. Predictable routines around transitions reduce anxiety.">
+            <circle class="hotspot-pulse" cx="872" cy="228" r="14" fill="#F7941E" opacity="0.6"/>
+            <circle cx="872" cy="228" r="10" fill="#F7941E" stroke="#fff" stroke-width="2"/>
+            <text x="872" y="232" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+          </g>
+        </svg>
+        <div class="env-legend" style="padding:0.75rem 1rem;">
+          <span><span class="env-legend-dot" style="background:#BBD64A;"></span> Supportive feature</span>
+          <span><span class="env-legend-dot" style="background:#F7941E;"></span> Consider adjusting</span>
+          <span><span class="env-legend-dot" style="background:#F15B40;"></span> Common challenge</span>
+          <span style="margin-left:auto; font-style:italic;">Click hotspots to learn more</span>
+        </div>
+      </div>
+      <div id="env-tooltip-pl" class="env-tooltip">
+        <button class="env-tooltip-close" onclick="this.parentElement.classList.remove('visible')">&times;</button>
+        <h4 id="tt-pl-title"></h4>
+        <p id="tt-pl-info"></p>
+      </div>
+    </div>
+
+    <!-- Step 4: Executive Functioning Webinar -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div class="step-title">Watch: Executive Functioning Webinar</div>
+      </div>
+      <div class="video-wrap">
+        <iframe src="https://player.vimeo.com/video/1087869850?title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="reflection-card">
+        <p><strong>Reflect:</strong> As you watch, think about how executive functioning challenges might show up in your classroom. What strategies could you try?</p>
+      </div>
+      <div class="card" style="margin-top:1rem;">
+        <div class="field-group">
+          <label class="field-label" for="pl-ef-q1">What is one executive functioning challenge you've observed in a student?</label>
+          <textarea class="field-textarea" id="pl-ef-q1" data-key="pl_ef_q1" placeholder="Describe what you've noticed&hellip;"></textarea>
+        </div>
+        <div class="field-group" style="margin-bottom:0;">
+          <label class="field-label" for="pl-ef-q2">What strategy from the webinar could you trial in your classroom?</label>
+          <textarea class="field-textarea" id="pl-ef-q2" data-key="pl_ef_q2" placeholder="Share your ideas&hellip;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5: Kookaburra Resource -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div class="step-title">Resource: Djarmbi the Kookaburra</div>
+      </div>
+      <div class="resource-cta">
+        <img src="Kookaburra.png" alt="Djarmbi the Kookaburra — illustrated storybook cover">
+        <div class="resource-cta-text">
+          <h4>Djarmbi the Kookaburra</h4>
+          <p>This storybook supports young people to explore, understand and celebrate family, culture and difference in the world. Building awareness of autism and an importance of inclusivity within the home, school and broader community.</p>
+          <button class="btn btn-orange" onclick="alert('This will open the Djarmbi the Kookaburra resource. (Demo only)')">Explore Resource &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 6: Planning Tool -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div class="step-title">Complete the Planning Tool</div>
+      </div>
+      <div class="planning-cta">
+        <div class="planning-cta-icon">&#128203;</div>
+        <div class="planning-cta-text">
+          <h4>Diversity Wheel &amp; Planning Tool</h4>
+          <p>Use this template to map your student's unique profile and plan targeted support strategies. Complete this before your workshop to bring along for discussion.</p>
+          <a href="https://www.positivepartnerships.com.au/resources/practical-tools-information-sheets/diversity-wheel-planning-tool" class="btn btn-lime" target="_blank" rel="noopener">Open Planning Tool &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pw-pl -->
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ═══════════ PARENTS & CARERS ═══════════ -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="pathway-section" id="pw-pc">
+    <button class="back-link" onclick="closePW()">&larr; Back to all pathways</button>
+
+    <h2>Parents &amp; Carers</h2>
+    <div class="section-rule"></div>
+    <p>This pathway is designed for parents and carers of autistic young people. Explore modules, interactive environments, and resources to deepen your understanding and build strategies for home, school, and community.</p>
+
+    <!-- Step 1: Intro to Autism Module -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div class="step-title">Introduction to Autism Module</div>
+      </div>
+      <div class="module-cta">
+        <div class="module-icon-wrap">&#128218;</div>
+        <div class="module-cta-text">
+          <h4>Introduction to Autism</h4>
+          <div class="module-badge">&#9200; 2.5 hours &bull; Online &bull; Self-paced</div>
+          <p>This comprehensive module explores what autism is, how it presents in young people, and how you can best support your child at home, at school, and in the community. Covers communication, sensory processing, executive functioning, and strengths-based approaches.</p>
+          <button class="btn btn-purple" onclick="alert('This will open the Introduction to Autism module. (Demo only)')">Start Module &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Checklist & Reflection -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div class="step-title">Reflect on Your Understanding</div>
+      </div>
+      <p>Take a moment to consider what you already know about how autism affects your child, and what you'd like to learn more about.</p>
+
+      <div class="checklist-card">
+        <div class="checklist-title-row">
+          <h4>I feel confident in my understanding of&hellip;</h4>
+          <span class="checklist-badge" id="pc-cl-badge">0 selected</span>
+        </div>
+        <div id="pc-checklist">
+          <!-- JS populated -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="field-group">
+          <label class="field-label" for="pc-reflect1">What do you most want to understand about your child's experience?</label>
+          <textarea class="field-textarea" id="pc-reflect1" data-key="pc_reflect1" placeholder="Share your thoughts&hellip;"></textarea>
+        </div>
+        <div class="field-group" style="margin-bottom:0;">
+          <label class="field-label" for="pc-reflect2">What's one situation at home, school, or in the community that you find challenging?</label>
+          <span class="field-sub">Optional — this stays private to you</span>
+          <textarea class="field-textarea" id="pc-reflect2" data-key="pc_reflect2" placeholder="Describe the situation (optional)&hellip;" style="min-height:70px;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Interactive Environments -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div class="step-title">Explore: Environments That Impact Your Child</div>
+      </div>
+      <p>Your child navigates many different environments each day. Click the highlighted areas in each scene to understand how these spaces can affect autistic young people — and what adjustments can help.</p>
+
+      <div class="env-tabs" id="pc-env-tabs">
+        <button class="env-tab-btn active" data-scene="home">&#127968; Home</button>
+        <button class="env-tab-btn" data-scene="community">&#127978; Community</button>
+        <button class="env-tab-btn" data-scene="school">&#127979; School</button>
+      </div>
+
+      <!-- HOME -->
+      <div class="env-scene active" id="scene-home">
+        <div class="env-container">
+          <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" style="background:#faf5ee;">
+            <!-- Floor -->
+            <rect x="0" y="320" width="900" height="180" fill="#c9b99a"/>
+            <rect x="0" y="320" width="900" height="3" fill="#b8a888"/>
+            <!-- Walls -->
+            <rect x="0" y="0" width="900" height="320" fill="#f5efe6"/>
+            <!-- Living room window -->
+            <rect x="50" y="50" width="160" height="160" rx="4" fill="#c5e8f7" stroke="#a09080" stroke-width="3"/>
+            <line x1="130" y1="50" x2="130" y2="210" stroke="#a09080" stroke-width="2"/>
+            <rect x="50" y="204" width="160" height="10" rx="2" fill="#a09080"/>
+            <!-- Curtains -->
+            <path d="M46,46 Q60,130 46,214" stroke="#C2A7CF" stroke-width="3" fill="none"/>
+            <path d="M214,46 Q200,130 214,214" stroke="#C2A7CF" stroke-width="3" fill="none"/>
+            <!-- Couch -->
+            <rect x="40" y="340" width="220" height="70" rx="12" fill="#8d7b6b"/>
+            <rect x="50" y="330" width="200" height="50" rx="10" fill="#a08e7e"/>
+            <rect x="55" y="335" width="55" height="40" rx="6" fill="#b09e8e"/>
+            <rect x="145" y="335" width="55" height="40" rx="6" fill="#b09e8e"/>
+            <!-- TV area -->
+            <rect x="320" y="60" width="180" height="120" rx="4" fill="#222" stroke="#444" stroke-width="3"/>
+            <rect x="395" y="180" width="30" height="40" fill="#666"/>
+            <rect x="370" y="220" width="80" height="8" rx="2" fill="#555"/>
+            <!-- Bookshelf -->
+            <rect x="560" y="40" width="120" height="240" rx="4" fill="#c4a67a" stroke="#a0875c" stroke-width="2"/>
+            <line x1="562" y1="100" x2="678" y2="100" stroke="#a0875c" stroke-width="2"/>
+            <line x1="562" y1="160" x2="678" y2="160" stroke="#a0875c" stroke-width="2"/>
+            <line x1="562" y1="220" x2="678" y2="220" stroke="#a0875c" stroke-width="2"/>
+            <rect x="570" y="50" width="15" height="45" rx="1" fill="#712D90" opacity="0.5"/>
+            <rect x="590" y="55" width="12" height="40" rx="1" fill="#BBD64A" opacity="0.5"/>
+            <rect x="608" y="48" width="14" height="48" rx="1" fill="#F7941E" opacity="0.5"/>
+            <!-- Kitchen area (right side) -->
+            <rect x="730" y="220" width="160" height="100" rx="4" fill="#ddd"/>
+            <rect x="740" y="230" width="60" height="50" rx="2" fill="#ccc"/>
+            <rect x="810" y="230" width="60" height="50" rx="2" fill="#ccc"/>
+            <rect x="730" y="316" width="160" height="60" rx="0" fill="#b8a070"/>
+            <!-- Lamp -->
+            <rect x="280" y="250" width="8" height="70" fill="#bbb"/>
+            <ellipse cx="284" cy="250" rx="25" ry="12" fill="#f5e6c8" stroke="#ddd" stroke-width="1"/>
+            <!-- Rug -->
+            <ellipse cx="200" cy="450" rx="150" ry="40" fill="#C2A7CF" opacity="0.3"/>
+            <!-- Dining table -->
+            <rect x="440" y="370" width="160" height="90" rx="6" fill="#c4a67a" stroke="#a0875c" stroke-width="1.5"/>
+
+            <!-- HOTSPOTS -->
+            <g class="env-hotspot" data-title="Screen Time &amp; TV" data-info="Screens can be a source of comfort and special interest for autistic young people, but sudden loud sounds, bright flashing scenes, or unexpected content changes can cause sensory overload. Consider using subtitles, controlling volume, and creating predictable screen time routines.">
+              <circle class="hotspot-pulse" cx="410" cy="120" r="14" fill="#F7941E" opacity="0.6"/>
+              <circle cx="410" cy="120" r="10" fill="#F7941E" stroke="#fff" stroke-width="2"/>
+              <text x="410" y="124" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Quiet Retreat Space" data-info="Every home benefits from having a designated quiet space where your child can go to regulate. This might be a corner with cushions, a beanbag, noise-cancelling headphones, and favourite comfort items. It's not a punishment — it's a proactive regulation strategy your child can choose to use.">
+              <circle class="hotspot-pulse" cx="620" cy="140" r="14" fill="#BBD64A" opacity="0.6"/>
+              <circle cx="620" cy="140" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+              <text x="620" y="144" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+            </g>
+            <g class="env-hotspot" data-title="Lighting at Home" data-info="Harsh overhead lighting can be just as uncomfortable at home as at school. Try using warm-toned lamps, dimmable lights, or fairy lights to create a calmer atmosphere, especially in the evenings. Natural light during the day is usually preferred.">
+              <circle class="hotspot-pulse" cx="284" cy="250" r="14" fill="#F7941E" opacity="0.6"/>
+              <circle cx="284" cy="250" r="10" fill="#F7941E" stroke="#fff" stroke-width="2"/>
+              <text x="284" y="254" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Kitchen Sounds &amp; Smells" data-info="Kitchens are full of sensory input — the hum of the fridge, the beep of the microwave, cooking smells, and clattering dishes. Some autistic young people may find mealtimes overwhelming. Consider reducing background noise during meals, using unscented products, and giving warnings before loud appliances.">
+              <circle class="hotspot-pulse" cx="810" cy="280" r="14" fill="#F15B40" opacity="0.6"/>
+              <circle cx="810" cy="280" r="10" fill="#F15B40" stroke="#fff" stroke-width="2"/>
+              <text x="810" y="284" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Mealtimes &amp; Routine" data-info="Mealtimes can be a source of stress if routines vary or if sensory sensitivities around food textures, smells, and presentation are not considered. Having a consistent mealtime routine, allowing preferred seating, and not forcing new foods can reduce anxiety. Visual menus showing what's for dinner can also help.">
+              <circle class="hotspot-pulse" cx="520" cy="415" r="14" fill="#F7941E" opacity="0.6"/>
+              <circle cx="520" cy="415" r="10" fill="#F7941E" stroke="#fff" stroke-width="2"/>
+              <text x="520" y="419" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Comfortable Textures" data-info="Soft furnishings, blankets, and cushions can provide comforting tactile input. Consider the textures your child prefers — some may love deep pressure from heavy blankets, while others prefer smooth, cool surfaces. Having their preferred textures available in the living space supports regulation.">
+              <circle class="hotspot-pulse" cx="150" cy="355" r="14" fill="#BBD64A" opacity="0.6"/>
+              <circle cx="150" cy="355" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+              <text x="150" y="359" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+            </g>
+          </svg>
+          <div class="env-legend" style="padding:0.75rem 1rem;">
+            <span><span class="env-legend-dot" style="background:#BBD64A;"></span> Supportive feature</span>
+            <span><span class="env-legend-dot" style="background:#F7941E;"></span> Consider adjusting</span>
+            <span><span class="env-legend-dot" style="background:#F15B40;"></span> Common challenge</span>
+            <span style="margin-left:auto; font-style:italic;">Click hotspots to learn more</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMMUNITY / SHOPPING CENTRE -->
+      <div class="env-scene" id="scene-community">
+        <div class="env-container">
+          <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" style="background:#f0eff5;">
+            <!-- Floor -->
+            <rect x="0" y="330" width="900" height="170" fill="#e0ddd5"/>
+            <rect x="0" y="330" width="900" height="3" fill="#ccc8bf"/>
+            <!-- Floor tiles -->
+            <line x1="0" y1="400" x2="900" y2="400" stroke="#d5d0c8" stroke-width="1"/>
+            <line x1="150" y1="330" x2="150" y2="500" stroke="#d5d0c8" stroke-width="1"/>
+            <line x1="300" y1="330" x2="300" y2="500" stroke="#d5d0c8" stroke-width="1"/>
+            <line x1="450" y1="330" x2="450" y2="500" stroke="#d5d0c8" stroke-width="1"/>
+            <line x1="600" y1="330" x2="600" y2="500" stroke="#d5d0c8" stroke-width="1"/>
+            <line x1="750" y1="330" x2="750" y2="500" stroke="#d5d0c8" stroke-width="1"/>
+            <!-- Ceiling -->
+            <rect x="0" y="0" width="900" height="60" fill="#e8e6e0"/>
+            <!-- Overhead lights (harsh) -->
+            <rect x="100" y="50" width="100" height="10" rx="2" fill="#fffbe6"/>
+            <rect x="300" y="50" width="100" height="10" rx="2" fill="#fffbe6"/>
+            <rect x="500" y="50" width="100" height="10" rx="2" fill="#fffbe6"/>
+            <rect x="700" y="50" width="100" height="10" rx="2" fill="#fffbe6"/>
+            <!-- Left shop -->
+            <rect x="20" y="70" width="250" height="255" rx="4" fill="#fff" stroke="#ddd" stroke-width="2"/>
+            <rect x="30" y="80" width="230" height="40" rx="2" fill="#712D90"/>
+            <text x="145" y="106" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff" font-weight="bold">CLOTHING</text>
+            <rect x="40" y="140" width="50" height="80" rx="2" fill="#E1BEE7"/>
+            <rect x="100" y="140" width="50" height="80" rx="2" fill="#BBDEFB"/>
+            <rect x="160" y="140" width="50" height="80" rx="2" fill="#C8E6C9"/>
+            <rect x="40" y="240" width="80" height="60" rx="2" fill="#eee"/>
+            <rect x="140" y="240" width="80" height="60" rx="2" fill="#eee"/>
+            <!-- Centre area - escalator -->
+            <rect x="370" y="100" width="160" height="220" rx="4" fill="#d0d0d0" stroke="#bbb" stroke-width="2"/>
+            <line x1="390" y1="120" x2="390" y2="300" stroke="#bbb" stroke-width="1"/>
+            <line x1="510" y1="120" x2="510" y2="300" stroke="#bbb" stroke-width="1"/>
+            <text x="450" y="200" text-anchor="middle" font-family="Arial" font-size="11" fill="#888" transform="rotate(-90, 450, 200)">ESCALATOR</text>
+            <!-- Right shop -->
+            <rect x="620" y="70" width="260" height="255" rx="4" fill="#fff" stroke="#ddd" stroke-width="2"/>
+            <rect x="630" y="80" width="240" height="40" rx="2" fill="#F7941E"/>
+            <text x="750" y="106" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff" font-weight="bold">ELECTRONICS</text>
+            <rect x="640" y="140" width="80" height="60" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+            <rect x="730" y="140" width="80" height="60" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+            <rect x="640" y="220" width="60" height="70" rx="2" fill="#333"/>
+            <rect x="710" y="220" width="60" height="70" rx="2" fill="#333"/>
+            <rect x="780" y="220" width="60" height="70" rx="2" fill="#333"/>
+            <!-- Food court sign -->
+            <rect x="300" y="340" width="300" height="50" rx="6" fill="#fff" stroke="#F15B40" stroke-width="2"/>
+            <text x="450" y="372" text-anchor="middle" font-family="Arial" font-size="15" fill="#F15B40" font-weight="bold">FOOD COURT &#8594;</text>
+            <!-- People (simple shapes) -->
+            <circle cx="200" cy="380" r="8" fill="#a09080"/>
+            <rect x="194" y="388" width="12" height="20" rx="3" fill="#a09080"/>
+            <circle cx="550" cy="400" r="8" fill="#8b7b6b"/>
+            <rect x="544" y="408" width="12" height="20" rx="3" fill="#8b7b6b"/>
+            <circle cx="700" cy="370" r="8" fill="#9b8b7b"/>
+            <rect x="694" y="378" width="12" height="20" rx="3" fill="#9b8b7b"/>
+
+            <!-- HOTSPOTS -->
+            <g class="env-hotspot" data-title="Fluorescent Lighting" data-info="Shopping centres typically use bright fluorescent lighting that can cause significant sensory discomfort — headaches, visual stress, and anxiety. If your child is sensitive to light, consider visiting during quieter times, bringing sunglasses or a cap, or looking for centres that offer 'quiet hours' with dimmed lighting.">
+              <circle class="hotspot-pulse" cx="350" cy="55" r="14" fill="#F15B40" opacity="0.6"/>
+              <circle cx="350" cy="55" r="10" fill="#F15B40" stroke="#fff" stroke-width="2"/>
+              <text x="350" y="59" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Crowds &amp; Unpredictability" data-info="The unpredictable movement of crowds — people bumping into you, unexpected physical proximity, changing noise levels — can be extremely overwhelming. Strategies include visiting at off-peak times, using a social story beforehand to prepare, having a clear plan and route through the centre, and identifying exit points in advance.">
+              <circle class="hotspot-pulse" cx="550" cy="400" r="14" fill="#F15B40" opacity="0.6"/>
+              <circle cx="550" cy="400" r="10" fill="#F15B40" stroke="#fff" stroke-width="2"/>
+              <text x="550" y="404" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Noise Levels" data-info="Shopping centres combine music, announcements, chatter, clinking, and machinery into a wall of sound. Noise-cancelling headphones or ear defenders are essential tools. You might also create a 'noise plan' — let your child know in advance what sounds to expect, and agree on a signal they can use if they need to leave.">
+              <circle class="hotspot-pulse" cx="750" cy="150" r="14" fill="#F15B40" opacity="0.6"/>
+              <circle cx="750" cy="150" r="10" fill="#F15B40" stroke="#fff" stroke-width="2"/>
+              <text x="750" y="154" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Escalators &amp; Movement" data-info="Escalators can be challenging for autistic young people due to the movement, depth perception required, and the need to time stepping on and off. Some children may prefer lifts or stairs. Never rush — allow extra time and let your child decide when they're ready to step on.">
+              <circle class="hotspot-pulse" cx="450" cy="200" r="14" fill="#F7941E" opacity="0.6"/>
+              <circle cx="450" cy="200" r="10" fill="#F7941E" stroke="#fff" stroke-width="2"/>
+              <text x="450" y="204" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Food Court Sensory Overload" data-info="Food courts combine every sensory challenge — strong smells, loud noise, bright lights, crowded seating, and unfamiliar food options. If eating out is part of the plan, consider choosing a quieter restaurant, bringing familiar food, or eating at off-peak times. Some families find takeaway eaten in a quieter spot works better.">
+              <circle class="hotspot-pulse" cx="450" cy="365" r="14" fill="#F15B40" opacity="0.6"/>
+              <circle cx="450" cy="365" r="10" fill="#F15B40" stroke="#fff" stroke-width="2"/>
+              <text x="450" y="369" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Visual Preparation" data-info="Before visiting, use visual supports — a social story about what will happen, photos of the shopping centre, a visual list of shops to visit, and a clear timeline. Knowing what to expect significantly reduces anxiety. Include a 'finished' signal so your child knows when the trip is nearly over.">
+              <circle class="hotspot-pulse" cx="145" cy="200" r="14" fill="#BBD64A" opacity="0.6"/>
+              <circle cx="145" cy="200" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+              <text x="145" y="204" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+            </g>
+          </svg>
+          <div class="env-legend" style="padding:0.75rem 1rem;">
+            <span><span class="env-legend-dot" style="background:#BBD64A;"></span> Supportive strategy</span>
+            <span><span class="env-legend-dot" style="background:#F7941E;"></span> Consider adjusting</span>
+            <span><span class="env-legend-dot" style="background:#F15B40;"></span> Common challenge</span>
+            <span style="margin-left:auto; font-style:italic;">Click hotspots to learn more</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCHOOL -->
+      <div class="env-scene" id="scene-school">
+        <div class="env-container">
+          <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" style="background:#e8f4f8;">
+            <!-- Reuse classroom SVG structure -->
+            <rect x="0" y="320" width="900" height="180" fill="#d4c4a8"/>
+            <rect x="0" y="320" width="900" height="4" fill="#c4b498"/>
+            <rect x="0" y="0" width="900" height="320" fill="#f0ebe3"/>
+            <!-- Window -->
+            <rect x="40" y="40" width="180" height="200" rx="4" fill="#c5e8f7" stroke="#a0937d" stroke-width="3"/>
+            <line x1="130" y1="40" x2="130" y2="240" stroke="#a0937d" stroke-width="2"/>
+            <line x1="40" y1="140" x2="220" y2="140" stroke="#a0937d" stroke-width="2"/>
+            <!-- Whiteboard with visual schedule -->
+            <rect x="280" y="40" width="340" height="170" rx="4" fill="#ffffff" stroke="#b0b0b0" stroke-width="2"/>
+            <text x="450" y="70" text-anchor="middle" font-family="Arial" font-size="12" fill="#712D90" font-weight="bold">Visual Schedule</text>
+            <rect x="310" y="85" width="24" height="24" rx="3" fill="#BBD64A" opacity="0.6"/>
+            <rect x="340" y="88" width="80" height="8" rx="2" fill="#ddd"/>
+            <rect x="310" y="118" width="24" height="24" rx="3" fill="#F7941E" opacity="0.6"/>
+            <rect x="340" y="121" width="90" height="8" rx="2" fill="#ddd"/>
+            <rect x="310" y="151" width="24" height="24" rx="3" fill="#712D90" opacity="0.6"/>
+            <rect x="340" y="154" width="70" height="8" rx="2" fill="#ddd"/>
+            <!-- Timer on wall -->
+            <rect x="500" y="85" width="80" height="80" rx="8" fill="#f0f0f0" stroke="#ccc" stroke-width="2"/>
+            <text x="540" y="78" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">Visual Timer</text>
+            <circle cx="540" cy="125" r="28" fill="#fff" stroke="#712D90" stroke-width="2"/>
+            <path d="M540,125 L540,103" stroke="#712D90" stroke-width="2" stroke-linecap="round"/>
+            <path d="M540,125 L555,130" stroke="#999" stroke-width="1.5"/>
+            <!-- Calm wall (minimal displays) -->
+            <rect x="680" y="60" width="90" height="70" rx="3" fill="#f5f0e8" stroke="#ddd" stroke-width="1"/>
+            <text x="725" y="100" text-anchor="middle" font-family="Arial" font-size="8" fill="#999">Class<tspan x="725" dy="12">Agreement</tspan></text>
+            <!-- Student desks (varied arrangement) -->
+            <rect x="60" y="350" width="100" height="45" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+            <rect x="200" y="350" width="100" height="45" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+            <rect x="370" y="345" width="160" height="55" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+            <rect x="600" y="350" width="100" height="45" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+            <rect x="130" y="430" width="100" height="45" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+            <rect x="300" y="435" width="100" height="45" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+            <rect x="470" y="430" width="100" height="45" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+            <!-- Individual workstation (against wall) -->
+            <rect x="740" y="250" width="80" height="65" rx="4" fill="#d4a76a" stroke="#b8935a" stroke-width="1.5"/>
+            <rect x="750" y="260" width="60" height="10" rx="2" fill="#e0e0e0"/>
+            <!-- Quiet corner -->
+            <rect x="750" y="360" width="130" height="120" rx="6" fill="#e8ddf0" stroke="#C2A7CF" stroke-width="1.5" stroke-dasharray="4"/>
+            <rect x="770" y="385" width="35" height="45" rx="8" fill="#d4b8e0"/>
+            <rect x="815" y="390" width="30" height="35" rx="6" fill="#c4a8d0"/>
+            <text x="815" y="490" text-anchor="middle" font-family="Arial" font-size="9" fill="#712D90">Regulation Zone</text>
+            <!-- Headphones on hook -->
+            <rect x="680" y="160" width="30" height="30" rx="4" fill="#eee" stroke="#ccc" stroke-width="1"/>
+            <path d="M688,175 Q695,160 702,175" stroke="#666" stroke-width="2" fill="none"/>
+
+            <!-- HOTSPOTS -->
+            <g class="env-hotspot" data-title="Visual Schedule &amp; Predictability" data-info="A clear visual schedule helps your child know what's coming next, reducing anxiety about transitions and unexpected changes. Ask your child's teacher if they use a visual schedule, and if you can have a copy to review at home each morning. Predictability is one of the most powerful supports.">
+              <circle class="hotspot-pulse" cx="370" cy="120" r="14" fill="#BBD64A" opacity="0.6"/>
+              <circle cx="370" cy="120" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+              <text x="370" y="124" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+            </g>
+            <g class="env-hotspot" data-title="Visual Timer" data-info="Visual timers help autistic students understand how long an activity will last and when transitions will happen. This supports executive functioning by making abstract time concepts concrete and visible. Ask if your child's classroom uses these — they can also be helpful at home.">
+              <circle class="hotspot-pulse" cx="540" cy="85" r="14" fill="#BBD64A" opacity="0.6"/>
+              <circle cx="540" cy="85" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+              <text x="540" y="89" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+            </g>
+            <g class="env-hotspot" data-title="Seating Options" data-info="Different seating arrangements work for different students. Some may benefit from sitting at the front, while others prefer a quieter spot. A flexible classroom might include individual workstations, group tables, and quiet corners. Talk to your child about where they feel most comfortable and share this with their teacher.">
+              <circle class="hotspot-pulse" cx="450" cy="370" r="14" fill="#F7941E" opacity="0.6"/>
+              <circle cx="450" cy="370" r="10" fill="#F7941E" stroke="#fff" stroke-width="2"/>
+              <text x="450" y="374" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">!</text>
+            </g>
+            <g class="env-hotspot" data-title="Quiet Workstation" data-info="An individual workstation near a wall or partition can provide a low-distraction space for focused work. This isn't isolation — it's an option your child can choose when they need reduced sensory input to concentrate. Having this available shows that different working styles are respected.">
+              <circle class="hotspot-pulse" cx="780" cy="280" r="14" fill="#BBD64A" opacity="0.6"/>
+              <circle cx="780" cy="280" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+              <text x="780" y="284" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+            </g>
+            <g class="env-hotspot" data-title="Regulation Zone" data-info="A designated calm space in the classroom where your child can go to self-regulate is essential. This should include comfortable seating, sensory tools, and be accessible at all times — never removed as a consequence. Ask your child's teacher if this exists and how your child is supported to use it independently.">
+              <circle class="hotspot-pulse" cx="815" cy="410" r="14" fill="#BBD64A" opacity="0.6"/>
+              <circle cx="815" cy="410" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+              <text x="815" y="414" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+            </g>
+            <g class="env-hotspot" data-title="Noise-Cancelling Headphones" data-info="Having headphones available in the classroom allows students to manage auditory input during noisy activities, transitions, or independent work. These should be readily accessible — not something a student has to ask permission for. Consider having a pair at home too for homework time or busy environments.">
+              <circle class="hotspot-pulse" cx="695" cy="175" r="14" fill="#BBD64A" opacity="0.6"/>
+              <circle cx="695" cy="175" r="10" fill="#BBD64A" stroke="#fff" stroke-width="2"/>
+              <text x="695" y="179" text-anchor="middle" font-size="10" fill="#330044" font-weight="bold">&#10003;</text>
+            </g>
+          </svg>
+          <div class="env-legend" style="padding:0.75rem 1rem;">
+            <span><span class="env-legend-dot" style="background:#BBD64A;"></span> Supportive feature</span>
+            <span><span class="env-legend-dot" style="background:#F7941E;"></span> Consider adjusting</span>
+            <span><span class="env-legend-dot" style="background:#F15B40;"></span> Common challenge</span>
+            <span style="margin-left:auto; font-style:italic;">Click hotspots to learn more</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="env-tooltip-pc" class="env-tooltip">
+        <button class="env-tooltip-close" onclick="this.parentElement.classList.remove('visible')">&times;</button>
+        <h4 id="tt-pc-title"></h4>
+        <p id="tt-pc-info"></p>
+      </div>
+    </div>
+
+    <!-- Step 4: Sensory Processing Webinars -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div class="step-title">Watch: Sensory Processing Webinars</div>
+      </div>
+
+      <h4 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:600; font-size:1rem; color:var(--purple-dark); margin-bottom:0.5rem;">Understanding Sensory Processing</h4>
+      <div class="video-wrap">
+        <iframe src="https://player.vimeo.com/video/1098312230?title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <h4 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:600; font-size:1rem; color:var(--purple-dark); margin:1.5rem 0 0.5rem;">Sensory Processing Strategies</h4>
+      <div class="video-wrap">
+        <iframe src="https://player.vimeo.com/video/1102026907?title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <div class="reflection-card" style="margin-top:1.25rem;">
+        <p><strong>Reflect:</strong> Think about your child's sensory preferences. What sensory input do they seek out? What do they try to avoid? How might this understanding change the way you approach daily routines?</p>
+      </div>
+    </div>
+
+    <!-- Step 5: Kookaburra Resource -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div class="step-title">Resource: Djarmbi the Kookaburra</div>
+      </div>
+      <div class="resource-cta">
+        <img src="Kookaburra.png" alt="Djarmbi the Kookaburra — illustrated storybook cover">
+        <div class="resource-cta-text">
+          <h4>Djarmbi the Kookaburra</h4>
+          <p>This storybook supports young people to explore, understand and celebrate family, culture and difference in the world. Building awareness of autism and an importance of inclusivity within the home, school and broader community.</p>
+          <button class="btn btn-orange" onclick="alert('This will open the Djarmbi the Kookaburra resource. (Demo only)')">Explore Resource &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 6: Planning Tool -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div class="step-title">Complete the Planning Tool</div>
+      </div>
+      <div class="planning-cta">
+        <div class="planning-cta-icon">&#128203;</div>
+        <div class="planning-cta-text">
+          <h4>Diversity Wheel &amp; Planning Tool</h4>
+          <p>Use this template to map your child's unique profile — their strengths, interests, sensory needs, and support strategies. A great tool for sharing with your child's school.</p>
+          <a href="https://www.positivepartnerships.com.au/resources/practical-tools-information-sheets/diversity-wheel-planning-tool" class="btn btn-lime" target="_blank" rel="noopener">Open Planning Tool &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pw-pc -->
+
+</main>
+
+<footer class="site-footer">
+  <strong>Positive Partnerships</strong> &mdash; Working together to support autistic school-aged students &bull; &copy; 2026
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  function load(k, fb) { try { return JSON.parse(localStorage.getItem(k)) || fb; } catch { return fb; } }
+  function save(k, d) { try { localStorage.setItem(k, JSON.stringify(d)); } catch {} }
+
+  // ─── PATHWAY CHOOSER ───
+  const chooser = document.getElementById('pw-chooser');
+  const pwCards = chooser.querySelectorAll('.pw-card');
+  const pwSections = document.querySelectorAll('.pathway-section');
+
+  window.openPW = function(id) {
+    pwCards.forEach(c => {
+      c.classList.toggle('active', c.dataset.pw === id);
+      c.classList.toggle('dimmed', c.dataset.pw !== id);
+    });
+    pwSections.forEach(s => s.classList.remove('active'));
+    const target = document.getElementById('pw-' + id);
+    if (target) {
+      target.classList.add('active');
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+  };
+  window.closePW = function() {
+    pwCards.forEach(c => c.classList.remove('active', 'dimmed'));
+    pwSections.forEach(s => s.classList.remove('active'));
+    document.getElementById('choose-heading').scrollIntoView({ behavior: 'smooth' });
+  };
+  pwCards.forEach(c => c.addEventListener('click', () => openPW(c.dataset.pw)));
+
+  // ─── PL CHECKLIST ───
+  const plItems = [
+    'How autism presents in school-aged students',
+    'Sensory processing and its impact on learning',
+    'Communication differences in autistic students',
+    'Executive functioning and classroom strategies',
+    'Creating inclusive classroom environments',
+    'Building positive relationships with autistic students',
+    'Collaborating with families and support staff',
+    'Strengths-based approaches to teaching'
+  ];
+  let plChecks = load('ol_pl_checks', plItems.map(() => false));
+  const plList = document.getElementById('pl-checklist');
+
+  function renderPlChecks() {
+    plList.innerHTML = '';
+    let count = 0;
+    plItems.forEach((item, i) => {
+      if (plChecks[i]) count++;
+      const div = document.createElement('div');
+      div.className = 'cl-item';
+      div.innerHTML = '<input type="checkbox" id="plc' + i + '"' + (plChecks[i] ? ' checked' : '') + '><label for="plc' + i + '">' + item + '</label>';
+      div.querySelector('input').addEventListener('change', function() {
+        plChecks[i] = this.checked;
+        save('ol_pl_checks', plChecks);
+        renderPlChecks();
+      });
+      plList.appendChild(div);
+    });
+    document.getElementById('pl-cl-badge').textContent = count + ' selected';
+  }
+  renderPlChecks();
+
+  // ─── PC CHECKLIST ───
+  const pcItems = [
+    'What autism means for my child',
+    'How sensory processing affects daily life',
+    'Supporting communication at home',
+    'Executive functioning and daily routines',
+    'Navigating school and working with teachers',
+    'Managing community outings and new environments',
+    'Understanding meltdowns vs. tantrums',
+    'Building on my child\'s strengths and interests'
+  ];
+  let pcChecks = load('ol_pc_checks', pcItems.map(() => false));
+  const pcList = document.getElementById('pc-checklist');
+
+  function renderPcChecks() {
+    pcList.innerHTML = '';
+    let count = 0;
+    pcItems.forEach((item, i) => {
+      if (pcChecks[i]) count++;
+      const div = document.createElement('div');
+      div.className = 'cl-item';
+      div.innerHTML = '<input type="checkbox" id="pcc' + i + '"' + (pcChecks[i] ? ' checked' : '') + '><label for="pcc' + i + '">' + item + '</label>';
+      div.querySelector('input').addEventListener('change', function() {
+        pcChecks[i] = this.checked;
+        save('ol_pc_checks', pcChecks);
+        renderPcChecks();
+      });
+      pcList.appendChild(div);
+    });
+    document.getElementById('pc-cl-badge').textContent = count + ' selected';
+  }
+  renderPcChecks();
+
+  // ─── TEXT AREA PERSISTENCE ───
+  document.querySelectorAll('.field-textarea[data-key]').forEach(ta => {
+    ta.value = load('ol_' + ta.dataset.key, '') || '';
+    ta.addEventListener('input', () => save('ol_' + ta.dataset.key, ta.value));
+  });
+
+  // ─── ENV TABS (Parent/Carer) ───
+  const envTabs = document.querySelectorAll('#pc-env-tabs .env-tab-btn');
+  const envScenes = document.querySelectorAll('.env-scene');
+  envTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      envTabs.forEach(t => t.classList.remove('active'));
+      envScenes.forEach(s => s.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('scene-' + tab.dataset.scene).classList.add('active');
+    });
+  });
+
+  // ─── HOTSPOT TOOLTIPS ───
+  function setupHotspots(containerSelector, tooltipId, titleId, infoId) {
+    const hotspots = document.querySelectorAll(containerSelector + ' .env-hotspot');
+    const tooltip = document.getElementById(tooltipId);
+    const ttTitle = document.getElementById(titleId);
+    const ttInfo = document.getElementById(infoId);
+
+    hotspots.forEach(hs => {
+      hs.addEventListener('click', (e) => {
+        e.stopPropagation();
+        ttTitle.textContent = hs.dataset.title;
+        ttInfo.textContent = hs.dataset.info;
+
+        const rect = hs.getBoundingClientRect();
+        let left = rect.left + rect.width / 2;
+        let top = rect.bottom + 12;
+
+        // Keep tooltip on screen
+        if (left + 160 > window.innerWidth) left = window.innerWidth - 180;
+        if (left - 160 < 0) left = 20;
+        if (top + 200 > window.innerHeight) top = rect.top - 200;
+
+        tooltip.style.left = Math.max(10, left - 160) + 'px';
+        tooltip.style.top = top + 'px';
+        tooltip.classList.add('visible');
+      });
+    });
+  }
+
+  setupHotspots('#classroom-env', 'env-tooltip-pl', 'tt-pl-title', 'tt-pl-info');
+  setupHotspots('#pw-pc', 'env-tooltip-pc', 'tt-pc-title', 'tt-pc-info');
+
+  // Close tooltips on outside click
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.env-tooltip').forEach(t => t.classList.remove('visible'));
+  });
+  document.querySelectorAll('.env-tooltip').forEach(t => {
+    t.addEventListener('click', e => e.stopPropagation());
+  });
+
+})();
+</script>
+</body>
+</html>

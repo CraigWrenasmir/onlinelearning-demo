@@ -699,54 +699,36 @@
     color: var(--purple);
   }
 
-  /* ─── MARK COMPLETE BUTTON ─── */
-  .step-complete-row {
-    display: flex;
+  /* ─── AUTO-COMPLETE TOAST ─── */
+  .step-toast {
+    display: none;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     margin-top: 1.25rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(194,167,207,0.15);
-  }
-  .mark-complete-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.25rem;
-    border-radius: 100px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.85rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, #f0f7d6 0%, #e8f2c4 100%);
+    border: 1px solid var(--lime);
+    font-size: 0.88rem;
     font-weight: 600;
-    border: 2px solid var(--purple-light);
-    background: var(--white);
-    color: var(--purple);
-    cursor: pointer;
-    transition: var(--transition);
+    color: var(--lime-dark);
+    animation: toastIn 0.5s ease-out;
   }
-  .mark-complete-btn:hover {
-    border-color: var(--purple);
-    background: var(--purple-wash);
-  }
-  .mark-complete-btn.completed {
-    background: var(--purple);
-    border-color: var(--purple);
-    color: var(--white);
-    pointer-events: none;
-  }
-  .mark-complete-btn .mc-icon {
-    width: 20px; height: 20px;
+  .step-toast.visible { display: flex; }
+  .step-toast .toast-icon {
+    width: 24px; height: 24px;
     border-radius: 50%;
-    border: 2px solid currentColor;
+    background: var(--lime);
+    color: var(--purple-dark);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
-    transition: var(--transition);
+    font-size: 12px;
+    flex-shrink: 0;
   }
-  .mark-complete-btn.completed .mc-icon {
-    background: var(--white);
-    color: var(--purple);
-    border-color: var(--white);
+  @keyframes toastIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* ─── CERTIFICATE MODAL ─── */
@@ -982,9 +964,7 @@
           <button class="btn btn-purple" onclick="alert('This will open the Introduction to Autism module. (Demo only)')">Start Module &rarr;</button>
         </div>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pl" data-idx="0"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pl-toast-0"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 2: Checklist & Reflection -->
@@ -1016,9 +996,7 @@
           <textarea class="field-textarea" id="pl-reflect2" data-key="pl_reflect2" placeholder="Describe any challenges (optional)&hellip;" style="min-height:70px;"></textarea>
         </div>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pl" data-idx="1"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pl-toast-1"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 3: Virtual Classroom -->
@@ -1143,9 +1121,7 @@
         <h4 id="tt-pl-title"></h4>
         <p id="tt-pl-info"></p>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pl" data-idx="2"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pl-toast-2"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 4: Executive Functioning Webinar -->
@@ -1170,9 +1146,7 @@
           <textarea class="field-textarea" id="pl-ef-q2" data-key="pl_ef_q2" placeholder="Share your ideas&hellip;"></textarea>
         </div>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pl" data-idx="3"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pl-toast-3"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 5: Kookaburra Resource -->
@@ -1189,9 +1163,7 @@
           <button class="btn btn-orange" onclick="alert('This will open the Djarmbi the Kookaburra resource. (Demo only)')">Explore Resource &rarr;</button>
         </div>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pl" data-idx="4"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pl-toast-4"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 6: Planning Tool -->
@@ -1208,9 +1180,7 @@
           <a href="https://www.positivepartnerships.com.au/resources/practical-tools-information-sheets/diversity-wheel-planning-tool" class="btn btn-lime" target="_blank" rel="noopener">Open Planning Tool &rarr;</a>
         </div>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pl" data-idx="5"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pl-toast-5"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
   </div><!-- /pw-pl -->
@@ -1260,9 +1230,7 @@
           <button class="btn btn-purple" onclick="alert('This will open the Introduction to Autism module. (Demo only)')">Start Module &rarr;</button>
         </div>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pc" data-idx="0"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pc-toast-0"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 2: Checklist & Reflection -->
@@ -1294,9 +1262,7 @@
           <textarea class="field-textarea" id="pc-reflect2" data-key="pc_reflect2" placeholder="Describe the situation (optional)&hellip;" style="min-height:70px;"></textarea>
         </div>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pc" data-idx="1"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pc-toast-1"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 3: Interactive Environments -->
@@ -1592,9 +1558,7 @@
         <h4 id="tt-pc-title"></h4>
         <p id="tt-pc-info"></p>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pc" data-idx="2"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pc-toast-2"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 4: Sensory Processing Webinars -->
@@ -1617,9 +1581,7 @@
       <div class="reflection-card" style="margin-top:1.25rem;">
         <p><strong>Reflect:</strong> Think about your child's sensory preferences. What sensory input do they seek out? What do they try to avoid? How might this understanding change the way you approach daily routines?</p>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pc" data-idx="3"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pc-toast-3"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 5: Kookaburra Resource -->
@@ -1636,9 +1598,7 @@
           <button class="btn btn-orange" onclick="alert('This will open the Djarmbi the Kookaburra resource. (Demo only)')">Explore Resource &rarr;</button>
         </div>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pc" data-idx="4"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pc-toast-4"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
     <!-- Step 6: Planning Tool -->
@@ -1655,9 +1615,7 @@
           <a href="https://www.positivepartnerships.com.au/resources/practical-tools-information-sheets/diversity-wheel-planning-tool" class="btn btn-lime" target="_blank" rel="noopener">Open Planning Tool &rarr;</a>
         </div>
       </div>
-      <div class="step-complete-row">
-        <button class="mark-complete-btn" data-pw="pc" data-idx="5"><span class="mc-icon"></span> Mark as Complete</button>
-      </div>
+      <div class="step-toast" id="pc-toast-5"><span class="toast-icon">&#10003;</span> Step complete</div>
     </div>
 
   </div><!-- /pw-pc -->
@@ -1756,18 +1714,6 @@
       dotsContainer.appendChild(dot);
     });
 
-    // Update mark-complete buttons
-    document.querySelectorAll('.mark-complete-btn[data-pw="' + pw + '"]').forEach(btn => {
-      const idx = parseInt(btn.dataset.idx);
-      if (data[idx]) {
-        btn.classList.add('completed');
-        btn.innerHTML = '<span class="mc-icon">&#10003;</span> Completed';
-      } else {
-        btn.classList.remove('completed');
-        btn.innerHTML = '<span class="mc-icon"></span> Mark as Complete';
-      }
-    });
-
     // Update step number styling
     document.querySelectorAll('[data-pw-step="' + pw + '"]').forEach(step => {
       const idx = parseInt(step.dataset.stepIdx);
@@ -1795,14 +1741,120 @@
     save('ol_' + pw + '_progress', data);
   }
 
-  // Mark-complete button handlers
-  document.querySelectorAll('.mark-complete-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pw = btn.dataset.pw;
-      const idx = parseInt(btn.dataset.idx);
-      const data = pw === 'pl' ? plProgress : pcProgress;
-      data[idx] = !data[idx]; // toggle
-      renderProgress(pw);
+  // ─── AUTO-COMPLETION TRIGGERS ───
+  function markStepDone(pw, idx) {
+    const data = pw === 'pl' ? plProgress : pcProgress;
+    if (data[idx]) return;
+    data[idx] = true;
+    renderProgress(pw);
+    const toast = document.getElementById(pw + '-toast-' + idx);
+    if (toast) toast.classList.add('visible');
+  }
+
+  // Track hotspot clicks
+  const hotspotClicks = { pl: new Set(), pc_home: new Set(), pc_community: new Set(), pc_school: new Set() };
+
+  // PL Step 0: Click "Start Module"
+  document.querySelector('#pw-pl .step[data-step-idx="0"] .btn-purple').addEventListener('click', function() {
+    setTimeout(() => markStepDone('pl', 0), 300);
+  });
+
+  // PL Step 1: Type 20+ chars in reflections
+  ['pl-reflect1', 'pl-reflect2'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => {
+      const total = document.getElementById('pl-reflect1').value.length + document.getElementById('pl-reflect2').value.length;
+      if (total >= 20) markStepDone('pl', 1);
+    });
+  });
+
+  // PL Step 2: Click 3+ classroom hotspots
+  document.querySelectorAll('#classroom-env .env-hotspot').forEach(hs => {
+    hs.addEventListener('click', () => {
+      hotspotClicks.pl.add(hs.dataset.title);
+      if (hotspotClicks.pl.size >= 3) markStepDone('pl', 2);
+    });
+  });
+
+  // PL Step 3: Type 20+ chars in EF reflections
+  ['pl-ef-q1', 'pl-ef-q2'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => {
+      const total = document.getElementById('pl-ef-q1').value.length + document.getElementById('pl-ef-q2').value.length;
+      if (total >= 20) markStepDone('pl', 3);
+    });
+  });
+
+  // PL Step 4: Click "Explore Resource"
+  document.querySelector('#pw-pl .step[data-step-idx="4"] .btn-orange').addEventListener('click', function() {
+    setTimeout(() => markStepDone('pl', 4), 300);
+  });
+
+  // PL Step 5: Click "Open Planning Tool"
+  document.querySelector('#pw-pl .step[data-step-idx="5"] .btn-lime').addEventListener('click', function() {
+    setTimeout(() => markStepDone('pl', 5), 300);
+  });
+
+  // PC Step 0: Click "Start Module"
+  document.querySelector('#pw-pc .step[data-step-idx="0"] .btn-purple').addEventListener('click', function() {
+    setTimeout(() => markStepDone('pc', 0), 300);
+  });
+
+  // PC Step 1: Type 20+ chars in reflections
+  ['pc-reflect1', 'pc-reflect2'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => {
+      const total = document.getElementById('pc-reflect1').value.length + document.getElementById('pc-reflect2').value.length;
+      if (total >= 20) markStepDone('pc', 1);
+    });
+  });
+
+  // PC Step 2: Click 4+ hotspots across any environment
+  document.querySelectorAll('#pw-pc .env-hotspot').forEach(hs => {
+    hs.addEventListener('click', () => {
+      const scene = hs.closest('.env-scene');
+      if (scene) {
+        const key = 'pc_' + scene.id.replace('scene-', '');
+        hotspotClicks[key] = hotspotClicks[key] || new Set();
+        hotspotClicks[key].add(hs.dataset.title);
+      }
+      const total = (hotspotClicks.pc_home ? hotspotClicks.pc_home.size : 0) +
+                    (hotspotClicks.pc_community ? hotspotClicks.pc_community.size : 0) +
+                    (hotspotClicks.pc_school ? hotspotClicks.pc_school.size : 0);
+      if (total >= 4) markStepDone('pc', 2);
+    });
+  });
+
+  // PC Step 3: Scroll to and view the sensory reflection card for 2 seconds
+  const sensoryReflection = document.querySelector('#pw-pc .step[data-step-idx="3"] .reflection-card');
+  if (sensoryReflection) {
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setTimeout(() => markStepDone('pc', 3), 2000);
+        obs.disconnect();
+      }
+    }, { threshold: 0.8 });
+    obs.observe(sensoryReflection);
+  }
+
+  // PC Step 4: Click "Explore Resource"
+  document.querySelector('#pw-pc .step[data-step-idx="4"] .btn-orange').addEventListener('click', function() {
+    setTimeout(() => markStepDone('pc', 4), 300);
+  });
+
+  // PC Step 5: Click "Open Planning Tool"
+  document.querySelector('#pw-pc .step[data-step-idx="5"] .btn-lime').addEventListener('click', function() {
+    setTimeout(() => markStepDone('pc', 5), 300);
+  });
+
+  // Show toasts for already-completed steps on load
+  ['pl', 'pc'].forEach(pw => {
+    const data = pw === 'pl' ? plProgress : pcProgress;
+    data.forEach((done, i) => {
+      if (done) {
+        const toast = document.getElementById(pw + '-toast-' + i);
+        if (toast) toast.classList.add('visible');
+      }
     });
   });
 
@@ -1820,8 +1872,17 @@
   window.resetProgress = function(pw) {
     if (pw === 'pl') {
       plProgress = Array(TOTAL_STEPS).fill(false);
+      hotspotClicks.pl = new Set();
     } else {
       pcProgress = Array(TOTAL_STEPS).fill(false);
+      hotspotClicks.pc_home = new Set();
+      hotspotClicks.pc_community = new Set();
+      hotspotClicks.pc_school = new Set();
+    }
+    // Hide all toasts for this pathway
+    for (let i = 0; i < TOTAL_STEPS; i++) {
+      const toast = document.getElementById(pw + '-toast-' + i);
+      if (toast) toast.classList.remove('visible');
     }
     renderProgress(pw);
   };
